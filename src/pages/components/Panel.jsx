@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import React, { memo } from 'react';
 import RefreshIcon from '../../assets/images/refresh.svg';
 import { Card, Typography, Button, Select, MenuItem } from '../../components';
 import COUNTRIES from '../../utils/countries';

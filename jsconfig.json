@@ -4,18 +4,21 @@
     "baseUrl": "src",
     "jsx": "react",
     "paths": {
-      "components:/*": [
+      "components/*": [
         "./components/*"
       ],
-      "pages:/*": [
-        "./pages/*"
+      "containers/*": [
+        "./containers/*"
       ],
-      "assets:/*": [
+      "assets/*": [
         "./assets/*"
       ],
-      "styles:/*": [
-        "./styles/*"
+      "resources/*": [
+        "./resources/*"
       ],
+      "commons/*": [
+        "./commons/*"
+      ]
     }
   },
   "exclude": [
