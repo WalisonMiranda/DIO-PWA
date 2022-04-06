@@ -1,17 +1,12 @@
-import React, { memo } from 'react';
-import RefreshIcon from '../../assets/images/refresh.svg';
-import { Card, Typography, Button, Select, MenuItem } from '../../components';
-import COUNTRIES from '../../utils/countries';
-import { CardPanelContentStyled, ItemStyled } from './style';
+import React, { memo } from "react";
+import { Card, Typography, Button, Select, MenuItem } from "../../components";
+import COUNTRIES from "../../utils/countries";
+import { CardPanelContentStyled, ItemStyled } from "./style";
 
 const navigatorHasShare = navigator.share;
 
-function Panel({ updateAt, onChange, data, country, getCovidData }) {
-  const { cases, 
-          recovered,
-          deaths,
-          todayCases,
-          todayDeaths } = data;
+function Panel({ updateAt, onChange, data, country }) {
+  const { cases } = data;
 
   const renderCountries = (country, index) => (
     <MenuItem key={`country-${index}`} value={country.value}>
@@ -22,17 +17,17 @@ function Panel({ updateAt, onChange, data, country, getCovidData }) {
     </MenuItem>
   );
 
-  const textCovid19 = `País: ${country} - recuperados: ${recovered}`;
+  const textCovid19 = `País: ${country} - Total de casos: ${cases}`;
 
   const copyInfo = () => {
     navigator.clipboard.writeText(textCovid19);
-  }
+  };
 
   const shareInfo = () => {
     navigator.share({
       title: `Dados do Covid19 - ${country}`,
       text: textCovid19,
-      url: 'https://pwa-dio.vercel.app/'
+      url: "https://pwa-dio.vercel.app/",
     });
   };
 
@@ -56,25 +51,23 @@ function Panel({ updateAt, onChange, data, country, getCovidData }) {
     <Card>
       <CardPanelContentStyled>
         <div>
-          <Typography 
-            variant="h5" 
-            component="span" 
-            color="primary"
-          >
+          <Typography variant="h5" component="span" color="primary">
             COVID-19
           </Typography>
 
-          <Typography 
-            variant="h6" 
-            component="span" 
+          <Typography
+            className="ml-2"
+            variant="h6"
+            component="span"
             color="primary"
           >
             Painel Coronavirus
           </Typography>
 
-          <Typography 
-            variant="body2" 
-            component="span" 
+          <Typography
+            className="ml-2"
+            variant="body2"
+            component="span"
             color="primary"
           >
             Atualizado em: {updateAt}
@@ -85,10 +78,10 @@ function Panel({ updateAt, onChange, data, country, getCovidData }) {
             </Select>
           </div>
         </div>
-        { navigatorHasShare ? renderShareButton : renderCopyButton }
+        {navigatorHasShare ? renderShareButton : renderCopyButton}
       </CardPanelContentStyled>
     </Card>
-  )
+  );
 }
 
 export default memo(Panel);
